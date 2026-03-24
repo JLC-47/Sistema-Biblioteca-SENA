@@ -26,5 +26,15 @@ public class Validador {
         }
     }
 
+
+    public void validarLimite(int limite){
+        if (limite == 3 ) {
+            System.out.println("No se puede prestar mas libros");
+        }else{
+            System.out.println("Tiene derecho a mas prestamos");
+        }
+    }
+
     
 }
+
