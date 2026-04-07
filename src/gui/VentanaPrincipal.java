@@ -4,10 +4,12 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import models.*;
+import utils.Validador;
 import config.Configuracion;
 
 public class VentanaPrincipal extends JFrame {
     private JPanel mainArea;
+    Validador validador = new Validador();
 
     public VentanaPrincipal(Usuarios u, GestorLibros gl, GestionUsuarios gu, GestorPrestamos gp) {
         setTitle(Configuracion.NOMBRE_BIBLIOTECA);
@@ -104,6 +106,7 @@ public class VentanaPrincipal extends JFrame {
             btnRegLibro.addActionListener(e -> {
                 try {
                     int i = Integer.parseInt(JOptionPane.showInputDialog("ISBN:"));
+                    validador.validarISBN(i);
                     String t = JOptionPane.showInputDialog("Título:");
                     String a = JOptionPane.showInputDialog("Autor:");
                     int an = Integer.parseInt(JOptionPane.showInputDialog("Año:"));
