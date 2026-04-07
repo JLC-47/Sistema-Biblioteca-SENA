@@ -19,7 +19,7 @@ public class GestorLibros {
 
         // Validar ISBN único
         for (Libros l : libros) {
-            if (l.getIsbn().equals(isbn)) {
+            if (l.getISBN().equals(isbn)) {
                 System.out.println("Error: El ISBN ya existe.");
                 return;
             }
@@ -32,23 +32,23 @@ public class GestorLibros {
             return;
         }
 
-        Libros libro = new Libro(isbn, titulo, autor, anio, "Disponible");
+        Libros libro = new Libros(isbn, titulo, autor, anio, "Disponible");
         libros.add(libro);
 
         System.out.println("Libro registrado correctamente.");
     }
 
     //  Buscar libro por ISBN
-    public void buscarLibro(String isbn) {
+    public void buscarLibro(int  isbn) {
         boolean encontrado = false;
 
-        for (Libro libro : libros) {
-            if (libro.getIsbn().equals(isbn)) {
+        for (Libros libro : libros) {
+            if (libro.getISBN() == isbn) {
                 System.out.println("\nLibro encontrado:");
-                System.out.println("ISBN: " + libro.getIsbn());
+                System.out.println("ISBN: " + libro.getISBN());
                 System.out.println("Título: " + libro.getTitulo());
                 System.out.println("Autor: " + libro.getAutor());
-                System.out.println("Año: " + libro.getAnio() );
+                System.out.println("Año: " + libro.getAnioPublicacion() );
                 System.out.println("Estado: " + libro.getEstado());
                 encontrado = true;
                 break;
@@ -61,13 +61,13 @@ public class GestorLibros {
     }
 
     //  Eliminar libro
-    public void eliminarLibro(String isbn) {
-        Iterator<Libro> iterator = libros.iterator();
+    public void eliminarLibro(int isbn) {
+        Iterator<Libros> iterator = libros.iterator();
         boolean eliminado = false;
 
         while (iterator.hasNext()) {
-            Libro libro = iterator.next();
-            if (libro.getIsbn().equals(isbn)) {
+            Libros libro = iterator.next();
+            if (libro.getISBN() == isbn) {
                 iterator.remove();
                 System.out.println("Libro eliminado correctamente.");
                 eliminado = true;
@@ -88,20 +88,20 @@ public class GestorLibros {
         }
 
         System.out.println("\nLista de libros:");
-        for (Libro libro : libros) {
+        for (Libros libro : libros) {
             System.out.println("-------------------------");
-            System.out.println("ISBN: " + libro.getIsbn());
+            System.out.println("ISBN: " + libro.getISBN());
             System.out.println("Título: " + libro.getTitulo());
             System.out.println("Autor: " + libro.getAutor());
-            System.out.println("Año: " + libro.getAnio());
+            System.out.println("Año: " + libro.getAnioPublicacion());
             System.out.println("Estado: " + libro.getEstado());
         }
     }
 
     //  Actualizar estado (Disponible / Prestado)
-    public void actualizarEstado(String isbn, String nuevoEstado) {
-        for (Libro libro : libros) {
-            if (libro.getIsbn().equals(isbn)) {
+    public void actualizarEstado(int isbn, String nuevoEstado) {
+        for (Libros libro : libros) {
+            if (libro.getISBN() == isbn) {
                 libro.setEstado(nuevoEstado);
                 System.out.println("Estado actualizado correctamente.");
                 return;
