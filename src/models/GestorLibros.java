@@ -66,7 +66,7 @@ public class GestorLibros {
         return libros;
     }
 
-    public Libros obtenerLibroPorIsbn(int isbn) {
+    public Libros obtenerLibroPorISBN(int isbn) {
         for (Libros l : libros) {
             if (l.getISBN() == isbn)
                 return l;
@@ -74,8 +74,5 @@ public class GestorLibros {
         return null;
     }
 
-    public Libros obtenerLibroPorISBN(int int1) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'obtenerLibroPorISBN'");
-    }
+     
 }

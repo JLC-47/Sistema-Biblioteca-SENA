@@ -21,6 +21,7 @@ public class GestorPrestamos {
         if (usuario.getTipoUsuario().equalsIgnoreCase("Lector") && conteo >= Configuracion.MAX_PRESTAMOS) {
             return false;
         }
+        
 
         libro.setEstado("Prestado");
         Prestamo nuevo = new Prestamo(2026, usuario.getDocumento(), libro.getISBN());
