@@ -8,10 +8,10 @@ public class Prestamo {
     private int limitePrestamo;
 
 
-    public Prestamo(int fechaPrestamo, String categoria, int limitePrestamo){
+    public Prestamo(int fechaPrestamo, String categoria, int isbn){
         this.fechaPrestamo = fechaPrestamo;
         this.categoria = categoria;
-        this.limitePrestamo = limitePrestamo;
+        this.limitePrestamo = isbn;
 
     }
 
