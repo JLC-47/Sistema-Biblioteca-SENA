@@ -6,55 +6,46 @@ public class GestionUsuarios {
 
     private ArrayList<Usuarios> listaUsuarios = new ArrayList<>();
 
-    // Registrar usuario
     public boolean registrarUsuario(String documento, String nombre, String tipo) {
-
-        // validar documento unico
         for (Usuarios u : listaUsuarios) {
             if (u.getDocumento().equals(documento)) {
                 return false;
             }
         }
-
         Usuarios nuevo = new Usuarios(documento, nombre, tipo);
         listaUsuarios.add(nuevo);
         return true;
     }
 
-    // Listar usuarios
-    public void listarUsuarios() {
-
-        if (listaUsuarios.isEmpty()) {
-            System.out.println("No hay usuarios registrados");
+    public boolean eliminarUsuario(String documento) {
+        Usuarios usuario = buscarUsuario(documento);
+        if (usuario != null) {
+            listaUsuarios.remove(usuario);
+            return true;
         }
-
-        for (Usuarios u : listaUsuarios) {
-            System.out.println(u);
-        }
+        return false;
     }
 
-    // Buscar usuario
-    public Usuarios buscarUsuario(String documento) {
+    public boolean actualizarUsuario(String documento, String nuevoNombre, String nuevoTipo) {
+        for (int i = 0; i < listaUsuarios.size(); i++) {
+            if (listaUsuarios.get(i).getDocumento().equals(documento)) {
+                listaUsuarios.set(i, new Usuarios(documento, nuevoNombre, nuevoTipo));
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public Usuarios buscarUsuario(String documento) {
         for (Usuarios u : listaUsuarios) {
             if (u.getDocumento().equals(documento)) {
                 return u;
             }
         }
-
         return null;
     }
 
-    // Eliminar usuario
-    public boolean eliminarUsuario(String documento) {
-
-        Usuarios usuario = buscarUsuario(documento);
-
-        if (usuario != null) {
-            listaUsuarios.remove(usuario);
-            return true;
-        }
-
-        return false;
+    public ArrayList<Usuarios> getUsuarios() {
+        return listaUsuarios;
     }
 }
