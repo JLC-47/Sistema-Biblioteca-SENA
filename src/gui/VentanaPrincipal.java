@@ -68,6 +68,7 @@ public class VentanaPrincipal extends JFrame {
         if (btnSolicitar != null) {
             btnSolicitar.addActionListener(e -> {
                 String isbn = JOptionPane.showInputDialog("ISBN del libro:");
+                validador.validarCampo(isbn);
                 if (isbn != null) {
                     Libros l = gl.obtenerLibroPorISBN(Integer.parseInt(isbn));
                     if (l != null && gp.registrarPrestamo(u, l)) {
@@ -108,10 +109,15 @@ public class VentanaPrincipal extends JFrame {
                     int i = Integer.parseInt(JOptionPane.showInputDialog("ISBN:"));
                     validador.validarISBN(i);
                     String t = JOptionPane.showInputDialog("Título:");
+                    validador.validarCampo(t);
                     String a = JOptionPane.showInputDialog("Autor:");
+                    validador.validarCampo(a);
                     int an = Integer.parseInt(JOptionPane.showInputDialog("Año:"));
                     gl.agregarLibro(i, t, a, an, "Disponible");
                     mostrarLibros(gl);
+
+
+
                 } catch (Exception ex) {}
             });
         }

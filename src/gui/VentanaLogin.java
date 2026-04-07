@@ -4,9 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import config.Configuracion;
 import models.*;
+import utils.Validador;
 
 public class VentanaLogin extends JFrame {
     private int intentos = 0;
+    Validador validador = new Validador();
 
     public VentanaLogin(GestionUsuarios gu, GestorLibros gl, GestorPrestamos gp) {
         setTitle("Login - " + Configuracion.NOMBRE_BIBLIOTECA);
@@ -58,12 +60,17 @@ public class VentanaLogin extends JFrame {
         });
 
         btnReg.addActionListener(e -> {
+            
             String doc = JOptionPane.showInputDialog("Documento:");
             String nom = JOptionPane.showInputDialog("Nombre:");
+            validador.validarCampo(nom);
+            validador.validarCampo(doc);
             if (doc != null && nom != null) {
                 gu.registrarUsuario(doc, nom, "Lector");
                 JOptionPane.showMessageDialog(this, "Registrado con éxito");
             }
+
+
         });
     }
 }
