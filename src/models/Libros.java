@@ -7,7 +7,7 @@ public  class Libros {
     private int anioPublicacion;
     private String  estado;
 
-    public Libros(int ISBN, String titulo, String autor, int edanioPublicacionad, String  estado, int anioPublicacion){
+    public Libros(int ISBN, String titulo, String autor, int anioPublicacion, String  estado){
         this.ISBN = ISBN;
         this.titulo = titulo;
         this.autor = autor;
@@ -15,6 +15,8 @@ public  class Libros {
         this.estado = estado;
         
     }
+
+    
 
     public int getISBN() {
         return ISBN;

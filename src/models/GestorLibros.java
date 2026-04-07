@@ -1,3 +1,5 @@
+package models;
+
 import java.util.*;
 
 public class GestorLibros {
@@ -9,17 +11,17 @@ public class GestorLibros {
     }
 
     // Registrar libro
-    public void agregarLibro(String isbn, String titulo, String autor, int anio) {
+    public void agregarLibro(int isbn, String titulo, String autor, int anio, String state) {
 
         // Validar campos vacíos
-        if (isbn.isEmpty() || titulo.isEmpty() || autor.isEmpty()) {
+        if (isbn == 0 || titulo.isEmpty() || autor.isEmpty()) {
             System.out.println("Error: Ningún campo puede estar vacío.");
             return;
         }
 
         // Validar ISBN único
         for (Libros l : libros) {
-            if (l.getISBN().equals(isbn)) {
+            if (l.getISBN() == isbn) {
                 System.out.println("Error: El ISBN ya existe.");
                 return;
             }
@@ -32,7 +34,7 @@ public class GestorLibros {
             return;
         }
 
-        Libros libro = new Libros(isbn, titulo, autor, anio, "Disponible");
+        Libros libro = new Libros(isbn,  titulo, autor, anio, state);
         libros.add(libro);
 
         System.out.println("Libro registrado correctamente.");
